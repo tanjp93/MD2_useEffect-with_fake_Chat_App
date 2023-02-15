@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import List from './components/List';
 
 function App() {
+  const  emitComment=(id)=>{
+    setInterval(() => {
+      window.dispatchEvent(
+        new CustomEvent(`Lesson -${id}`,{
+          detail: `Nội dung comment của Lesson ${id}`
+        })
+      )
+
+    }, 2000);
+  }
+  emitComment(1)
+  emitComment(2)
+  emitComment(3)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List/>
     </div>
   );
 }
